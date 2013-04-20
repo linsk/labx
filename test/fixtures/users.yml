@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nick: MyString
+  email: MyString
+  website: MyString
+  city: MyString
+  slogan: MyString
+  jointime: 2013-04-21
+  qq: MyString
+  phonecall: MyString
+  weibo: MyString
+  birthday: 2013-04-21
+  constellation: MyString
+  twitter: MyString
+  weixin: MyString
+  github: MyString
+  name: MyString
+  dribbble: MyString
+  avatar: MyString
+  graduation: 2013-04-21
+  role: MyString
+
+two:
+  nick: MyString
+  email: MyString
+  website: MyString
+  city: MyString
+  slogan: MyString
+  jointime: 2013-04-21
+  qq: MyString
+  phonecall: MyString
+  weibo: MyString
+  birthday: 2013-04-21
+  constellation: MyString
+  twitter: MyString
+  weixin: MyString
+  github: MyString
+  name: MyString
+  dribbble: MyString
+  avatar: MyString
+  graduation: 2013-04-21
+  role: MyString

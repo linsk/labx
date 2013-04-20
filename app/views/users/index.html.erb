@@ -1,0 +1,59 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Nick</th>
+    <th>Email</th>
+    <th>Website</th>
+    <th>City</th>
+    <th>Slogan</th>
+    <th>Jointime</th>
+    <th>Qq</th>
+    <th>Phonecall</th>
+    <th>Weibo</th>
+    <th>Birthday</th>
+    <th>Constellation</th>
+    <th>Twitter</th>
+    <th>Weixin</th>
+    <th>Github</th>
+    <th>Name</th>
+    <th>Dribbble</th>
+    <th>Avatar</th>
+    <th>Graduation</th>
+    <th>Role</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.nick %></td>
+    <td><%= user.email %></td>
+    <td><%= user.website %></td>
+    <td><%= user.city %></td>
+    <td><%= user.slogan %></td>
+    <td><%= user.jointime %></td>
+    <td><%= user.qq %></td>
+    <td><%= user.phonecall %></td>
+    <td><%= user.weibo %></td>
+    <td><%= user.birthday %></td>
+    <td><%= user.constellation %></td>
+    <td><%= user.twitter %></td>
+    <td><%= user.weixin %></td>
+    <td><%= user.github %></td>
+    <td><%= user.name %></td>
+    <td><%= user.dribbble %></td>
+    <td><%= user.avatar %></td>
+    <td><%= user.graduation %></td>
+    <td><%= user.role %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>
