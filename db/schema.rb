@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130420174750) do
+ActiveRecord::Schema.define(:version => 20130424043106) do
+
+  create_table "authentications", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "logs", :force => true do |t|
     t.string   "where"
@@ -41,8 +49,9 @@ ActiveRecord::Schema.define(:version => 20130420174750) do
     t.date     "graduation"
     t.string   "role"
     t.text     "introduce"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "password_digest"
   end
 
 end
