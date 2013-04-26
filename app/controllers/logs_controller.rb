@@ -10,6 +10,7 @@ class LogsController < ApplicationController
 	def status
 		@users = User.all
 		#TODO 最后离开时间距离现在...多久
+		#find_by_myteam
 	end
 
 end

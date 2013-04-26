@@ -35,7 +35,7 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   end
 
   def leaved
-    p = "leavad ago"
+    p = "Leavd ago "
     t = Time.now - self.logs.last.created_at
     if t > 86400
       d = t / 86400

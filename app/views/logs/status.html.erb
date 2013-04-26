@@ -10,14 +10,15 @@
 </div>
 
 <div id="status">
-	<% @users.each do |user| %>
+	<% @users.each do |user|%>
 	<div class="card">
 		<div class="profile">
-			<%= link_to(image_tag(user.avatar,:alt=>user.status,:class=>user.status),"#" )%>
+			<%= link_to(image_tag(user.avatar,:alt=>user.status,:class=>user.status),"#" ) if user.avatar %>
 			<p><a href="#">@<%= user.name %></a></p>
 		</div>
 		<div class="statu_comments"><%= user.leaved if user.status == "offline"  %></div>
-	</div>
+	</div>		
+
 	<% end %>
 </div>
 
