@@ -80,4 +80,10 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def disconnect
+    @auth = Authentication.find_by_provider_and_user_id(params[:provider],current_user)
+    @auth.destroy if @auth
+    redirect_to root_path, :notice => "Disconnect successfully"
+  end
 end

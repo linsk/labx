@@ -5,6 +5,8 @@
 		<li><a href="#">Statistics</a></li>
 	</ul>
 </div>
+<%= display_notice_and_alert %>
+<span><%= "Welcome @" + current_user.name_or_nick if current_user%></span>
 <div id="knock">
 	<!-- Open the door button -->
 </div>
@@ -14,9 +16,9 @@
 	<div class="card">
 		<div class="profile">
 			<%= link_to(image_tag(user.avatar,:alt=>user.status,:class=>user.status),"#" ) if user.avatar %>
-			<p><a href="#">@<%= user.name %></a></p>
+			<p><a href="#">@<%= user.nick_or_name %></a></p>
 		</div>
-		<div class="statu_comments"><%= user.leaved if user.status == "offline"  %></div>
+		<div class="statu_comments"><%= user.leaved if user.status == "offline" %></div>
 	</div>		
 
 	<% end %>

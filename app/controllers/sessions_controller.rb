@@ -19,12 +19,24 @@ class SessionsController < ApplicationController
         # account. But we found the authentication and the user associated with it 
         # is the current user. So the authentication is already associated with 
         # this user. So let's display an error message.
-        redirect_to root_path, notice: "You have already linked this account"
+        redirect_to root_path, notice: "You have already linked this account" 
       else
         # The authentication is not associated with the current_user so lets 
         # associate the authentication
         @authentication.user = current_user
         @authentication.save
+        if  @authentication.provider == "weibo"
+          current_user.nick = auth[:info][:nickname]   
+          current_user.avatar = auth[:info][:image]
+          current_user.weibo = auth[:info][:urls][:Weibo]
+        end
+        if @authentication.provider == "github"
+          current_user.github = auth[:info][:urls][:GitHub]
+          current_user.email = auth[:info][:email] if !current_user.email
+          current_user.avatar = auth[:info][:image] if !current_user.avatar
+          current_user.website = auth[:info][:urls][:Blog]
+        end
+        current_user.save
         redirect_to root_path, notice: "Account successfully authenticated"
       end
     else # no user is signed_in

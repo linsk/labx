@@ -4,6 +4,9 @@ Mothinlab::Application.routes.draw do
 
   match '/auth/:provider/callback', to: 'sessions#create'
   match '/auth/:provider/disconnect', to: 'users#disconnect'
+  match '/login', to: 'sessions#new'
+  match '/logout', to: 'sessions#destroy'
+
 
   match '/checkin', to: 'logs#log'
   match '/status',  to: 'logs#status'
@@ -56,7 +59,7 @@ Mothinlab::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'users#index'
+   root :to => 'logs#status'
 
   # See how all your routes lay out with "rake routes"
 

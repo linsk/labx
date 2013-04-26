@@ -10,10 +10,13 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :nick %><br />
-    <%= f.text_field :nick %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <% f.label :nick %><br />
+    <% f.text_field :nick %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
@@ -44,8 +47,8 @@
     <%= f.text_field :phonecall %>
   </div>
   <div class="field">
-    <%= f.label :weibo %><br />
-    <%= f.text_field :weibo %>
+    <% f.label :weibo %><br />
+    <% f.text_field :weibo %>
   </div>
   <div class="field">
     <%= f.label :birthday %><br />
@@ -64,20 +67,16 @@
     <%= f.text_field :weixin %>
   </div>
   <div class="field">
-    <%= f.label :github %><br />
-    <%= f.text_field :github %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <% f.label :github %><br />
+    <% f.text_field :github %>
   </div>
   <div class="field">
     <%= f.label :dribbble %><br />
     <%= f.text_field :dribbble %>
   </div>
   <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.text_field :avatar %>
+    <% f.label :avatar %><br />
+    <% f.text_field :avatar %>
   </div>
   <div class="field">
     <%= f.label :graduation %><br />
