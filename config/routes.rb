@@ -4,6 +4,9 @@ Mothinlab::Application.routes.draw do
 
   match '/auth/:provider/callback', to: 'sessions#create'
   match '/auth/:provider/disconnect', to: 'users#disconnect'
+
+  match '/checkin', to: 'logs#log'
+  match '/status',  to: 'logs#status'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

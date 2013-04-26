@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+
   protected
 
   helper_method :current_user, :signed_in?,:in_where ,:must_logedin,:connected?
@@ -26,8 +26,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, notice: "Must be loged in." if !signed_in? 
   end
 
-  def where
-  	request.remote_ip != "220.220.220.220" ? "online" :  "offline"
+  def in_where
+  	request.remote_ip != OFFICE_IP ? "online" :  "offline"
   end
 
 #User connected provider? return booleam
