@@ -25,4 +25,27 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   def admin?
     self.email == "linsk@linsk.cn"
   end
+
+  def status
+    if self.logs.last.created_at > Time.now - FRESH_TIME #60s?
+      self.logs.last.where
+    else
+      status = "offline"
+    end
+  end
+
+  def leaved
+    p = "leavad ago"
+    t = Time.now - self.logs.last.created_at
+    if t > 86400
+      d = t / 86400
+      p + d.to_i.to_s + " day"
+    elsif t >3600
+      h = t / 3600
+      p + h.to_i.to_s + "hour"
+    else
+      t > 60 ? m = t/60 : m=1
+      p + m.to_i.to_s+" min."
+    end
+  end
 end

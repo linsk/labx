@@ -1,0 +1,55 @@
+* {
+	padding: 0;margin: 0;
+}
+
+#header ul {
+	display: inline-block;
+
+}
+
+#header ul li{
+	/*display: inline-block;*/
+	float: left;
+	list-style:none;
+}
+
+#header ul li a{
+	border: 2px solid #eee;
+	padding: 10px;
+	display: block;
+	text-decoration: none;
+}
+
+.current_link{
+	border-bottom:5px solid #ff6600;
+	color: #ff6600;
+}
+
+#knock{
+	margin: 30px;
+}
+
+#status{
+	margin: 10px;
+}
+
+
+#status .card{
+	clear: both;
+}
+#status .card .profile{
+	float: left;
+	margin-right: 5px;
+}
+#status .card .profile img {
+	width: 50px;
+	height:50px;
+}
+#status .card .profile p{
+}
+#status .card .profile .statu_comments{
+	padding-top: 20px;
+}
+#list{
+	display: block;
+}
