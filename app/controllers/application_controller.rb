@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   protected
 
-  helper_method :current_user, :signed_in?,:in_where,:must_logedin,:connected?
+  helper_method :remote_ip,:current_user, :signed_in?,:from_here,:must_logedin,:connected?
 
   # rescue_from CanCan::AccessDenied do |exception|
   #   redirect_to root_url, :alert => exception.message
@@ -26,8 +26,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, notice: "Must be loged in." if !signed_in? 
   end
 
-  def in_where
-  	request.remote_ip != OFFICE_IP ? "online" :  "offline"
+  def from_here
+  	request.remote_ip == OFFICE_IP ? "office" :  "online"
   end
 
 #User connected provider? return booleam

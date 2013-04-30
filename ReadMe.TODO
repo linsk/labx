@@ -7,3 +7,10 @@ Website:
 有人在吗？:
 
 Reflesh time
+#TODO 最后离开时间距离现在...多久  √
+
+
+其他场所在线 = online
+office时间
+总上线时间 = online + office时间
+#TODO为新注册用户初始化一个log记录。

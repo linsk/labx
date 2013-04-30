@@ -2,7 +2,8 @@
 	<ul>
 		<li><a class="current_link" href="#" >HOME</a></li>
 		<li><a href="#">LIST</a></li>
-		<li><a href="#">Statistics</a></li>
+		<li><a href="#">My Profiles</a></li>
+		<li><a href="#">Write</a></li>
 	</ul>
 </div>
 <%= display_notice_and_alert %>
@@ -13,14 +14,14 @@
 
 <div id="status">
 	<% @users.each do |user|%>
-	<div class="card">
+	<div class="card ">
 		<div class="profile">
 			<%= link_to(image_tag(user.avatar,:alt=>user.status,:class=>user.status),"#" ) if user.avatar %>
-			<p><a href="#">@<%= user.nick_or_name %></a></p>
+			<span><a href="#">@<%= user.nick_or_name %></a></span>
 		</div>
-		<div class="statu_comments"><%= user.leaved if user.status == "offline" %></div>
-	</div>		
-
+		<div class="statu_comments"><%= user.status_comment %>
+		</div>
+	</div>
 	<% end %>
 </div>
 
@@ -34,4 +35,4 @@
 			</ul>
 			
 		</div>
-		<div id="statistics"></div> -->
+		<div id="statistics"></div> --><!-- user statistics-->

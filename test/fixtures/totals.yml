@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start: 2013-04-30 04:29:16
+  end: 2013-04-30 04:29:16
+  counter: MyString
+  user: 
+
+two:
+  start: 2013-04-30 04:29:16
+  end: 2013-04-30 04:29:16
+  counter: MyString
+  user: 
