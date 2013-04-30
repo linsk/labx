@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
   	request.remote_ip == OFFICE_IP ? "office" :  "online"
   end
 
+  def remote_ip
+    request.remote_ip 
+  end
+
 #User connected provider? return booleam
   def connected?(provider)
     # Authentication.where("provider=? AND user_id=?", provider,session[:user_id]).count > 0

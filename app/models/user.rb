@@ -16,8 +16,8 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   def self.create_with_omniauth(auth)
     # you should handle here different providers data
     # eg. case auth['provider'] ..
-    auth_has_an_nick = auth['info']['nickname'] ||= auth['provider']+auth['uid']
-    auth_has_an_email = auth['info']['email'] ||= auth['provider']+auth['uid']+'@'+'mail.com'
+    auth_has_an_nick = auth['info']['nickname'] ||= auth['provider']+auth['uid'].to_s
+    auth_has_an_email = auth['info']['email'] ||= auth['provider'] + auth['uid'].to_s + '@' + 'mail.com'
 
     temp_password = rand(36**10).to_s(36) 
     create(name: auth_has_an_nick, email: auth_has_an_email, password:temp_password, password_confirmation:temp_password)
@@ -39,7 +39,7 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   end
 
   def status #TODO为新注册用户初始化一个log记录。
-    self.logs.create(:where => "online") unless self.logs.last.updated_at
+    self.logs.create(:where => "online") if self.logs == []
     self.logs.last.updated_at > Time.now - FRESH_TIME ? self.logs.last.where : "offline"
   end
 
