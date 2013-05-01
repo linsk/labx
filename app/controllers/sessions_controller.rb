@@ -57,6 +57,7 @@ class SessionsController < ApplicationController
         else
           # otherwise we have to create a user with the auth hash
           u = User.create_with_omniauth(auth)
+          # 为新用户初始化一条log记录。
           # NOTE: we will handle the different types of data we get back
           # from providers at the model level in create_with_omniauth
           

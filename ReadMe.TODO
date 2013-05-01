@@ -7,8 +7,31 @@ Website:
 有人在吗？:
 
 Reflesh time √
-#TODO 最后离开时间距离现在...多久  √
-其他场所在线 = online
-office时间
-总上线时间 = online + office时间
-#TODO为新注册用户初始化一个log记录。 √
+ ✔ #TODO 最后离开时间距离现在...多久  √ @done (13-05-01 11:12)
+ ✔ #TODO为新注册用户初始化一个log记录。 √ @done (13-05-01 11:12)
+ ✔ 自动状态信息输出 @done (13-05-01 13:19)
+ ✔ 自定义状态输出 @done (13-05-01 13:58)
+ ☐ 自定义状态设置
+ ☐ ActionController::RoutingError (No route matches [GET] "/auth/failure")
+ ☐ 权限
+ ✔ Stauts_card_View @done (13-05-01 15:38)
+ ☐ 反向代理checkin问题  X-Forwarded-For
+ ☐ devices #Checked in from iPhone/Android/Mac/PC
+
+ 
+
+ Ranked:
+ 按 周 月 年 总 
+ ☐ office时间
+ ☐ online(提醒休息)
+
+
+ Report:
+ 用户的具体
+ ☐ online时间 仅限其他场所在线
+ ☐ office时间
+ ☐ 总上线时间 = online时间 + office时间
+  按 周 月 年 总 
+
+ Profile:
+ 个人信息及操作

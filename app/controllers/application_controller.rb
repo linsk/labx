@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def remote_ip
-    request.remote_ip 
+    request.server_name + " - " + request.remote_ip
   end
 
 #User connected provider? return booleam

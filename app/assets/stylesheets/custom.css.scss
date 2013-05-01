@@ -1,5 +1,10 @@
 * {
-	padding: 0;margin: 0;
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
 }
 
 #header ul {
@@ -43,9 +48,8 @@
 	padding: 5px;
 }
 #status .card .profile{
-	overflow: auto;
 	float: left;
-	margin-right: 5px;
+	width: 80px;
 }
 #status .card .profile img {
 	width: 50px;
@@ -63,19 +67,37 @@
 	border: 3px solid #9966cc;
 }
 
-
-#status .card .profile span{
-	float:left;
-	width: auto;
+#status .card .name{
+}
+#status .card .name span{
 }
 
 #status .card .profile a{
+	overflow: auto;	
 	color:#888;
 	text-align: center;
 	text-decoration: none;
+	font-size:1.1em;
 }
-#status .card .profile .statu_comments{
-	padding-top: 20px;
+
+#status .right_comments{
+		overflow: auto;
 }
+#status .custom_comment{
+	font-size:0.9em;
+}
+#status .leave_or_from{
+	position: relative;
+	bottom:0;
+	float: right;
+	font-size: 0.8em;
+}
+
 #list{
+}
+
+#footer{
+	
+	bottom:0px;
+	color:#888;
 }

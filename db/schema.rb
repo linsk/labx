@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429211229) do
+ActiveRecord::Schema.define(:version => 20130430191113) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider"
@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(:version => 20130429211229) do
   create_table "totals", :force => true do |t|
     t.datetime "start"
     t.datetime "end"
-    t.string   "counter"
+    t.float    "counter",      :limit => 255
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.string   "device"
     t.string   "where_online"
   end
