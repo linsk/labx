@@ -7,6 +7,7 @@ Mothinlab::Application.routes.draw do
   match '/login', to: 'sessions#new'
   match '/logout', to: 'sessions#destroy'
 
+  match '/mshow/:id', to:'users#mobileshow'
 
   match '/checkin', to: 'logs#log'
   match '/status',  to: 'logs#status'
