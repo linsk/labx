@@ -15,9 +15,10 @@ Reflesh time √
  ☐ ActionController::RoutingError (No route matches [GET] "/auth/failure")
  ☐ 权限
  ✔ Stauts_card_View @done (13-05-01 15:38)
- ☐ 反向代理checkin问题  X-Forwarded-For
+ ✔ 反向代理checkin问题  X-Forwarded-For @done (13-05-01 19:25)
+ ☐ session多域名支持 http://stackoverflow.com/questions/4060333/what-does-rails-3-session-store-domain-all-really-do
  ☐ devices #Checked in from iPhone/Android/Mac/PC
-
+ ☐ 多团队
  
 
  Ranked:
@@ -34,4 +35,12 @@ Reflesh time √
   按 周 月 年 总 
 
  Profile:
- 个人信息及操作
+ ☐ 个人信息
+ ☐ EDIT
+ ☐ CustomStatus
+
+ 效率表:
+ QQ
+  本来1 
+  >= 1hour的时候效率为0
+  >= 2小时的时候 -1

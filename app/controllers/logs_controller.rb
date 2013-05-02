@@ -33,8 +33,6 @@ class LogsController < ApplicationController
 
 	def status
 		@users = User.all
-		@ip = request.remote_ip
-		#find_by_myteam
 	end
 
 	def report
