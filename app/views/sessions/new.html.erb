@@ -1,12 +1,31 @@
-<%= form_tag "/auth/identity/callback" do %>
-<div class="field">
-<%= label_tag :auth_key, "Email" %>
+<%= render :partial => "/logs/mobile_nav" %>
 
-<%= text_field_tag :auth_key %>
-</div>
-<div class="field">
-<%= label_tag :password %>
+<div id="login_mobile_view">
+	<h3>Login</h3>
 
-<%= password_field_tag :password %>
+	<%= form_tag "/auth/identity/callback" do %>
+	<div class="field">
+		<span><%= label_tag :auth_key, "Email" %>
+		</span>
+		<div><%= text_field_tag :auth_key %></div>
+	</div>
+
+
+	<div class="field">
+		<span><%= label_tag :password %></span>
+		<div><%= password_field_tag :password %></div>
+	</div>
+
+	<div class="actions"><%= submit_tag "Login" %></div>
+	<% end %>
+
+	<div class="oauth">
+
+		<span>Sign in with <%= link_to " Weibo.com","/auth/weibo" %> or <%= link_to " Github.com","/auth/github" %></span>
+		
+	</div>
+
+
+
 </div>
-<div class="actions"><%= submit_tag "Login" %></div><% end %>
+<%= render :partial => 'layouts/mobile_footer' %>

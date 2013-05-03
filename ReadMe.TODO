@@ -4,6 +4,8 @@ Mothin Lab:
 Website:
 
 Mac:
+Macruby实现 webview
+
 PC:
 
 有人在吗？:
@@ -14,12 +16,12 @@ Reflesh time √
  ✔ 自动状态信息输出 @done (13-05-01 13:19)
  ✔ 自定义状态输出 @done (13-05-01 13:58)
  ☐ ActionController::RoutingError (No route matches [GET] "/auth/failure")
- ☐ login page design
+ ✔ login page design @done (13-05-03 17:09)
  ✔ 权限 @done (13-05-03 11:19)
  ✔ Stauts_card_View @done (13-05-01 15:38)
  ✔ 反向代理checkin问题  X-Forwarded-For @done (13-05-01 19:25)
  ☐ session多域名支持 http://stackoverflow.com/questions/4060333/what-does-rails-3-session-store-domain-all-really-do
- ☐ 登录，new，update 调转反向代理
+ ☐ 登录，new，update 跳转反向代理
  ✔ devices #Checked in from iPhone/Android/Mac/PC @done (13-05-03 16:13)
  ☐ 多团队支持
  ✔ Users#show => #mshow when user-agent == "mobile" @done (13-05-03 16:45)
