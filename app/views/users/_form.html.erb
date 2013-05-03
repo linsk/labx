@@ -36,7 +36,7 @@
   </div>
   <div class="field">
     <%= f.label :jointime %><br />
-    <%= f.date_select :jointime %>
+    <%= f.date_select :jointime,:start_year=>2012,:end_year=>Time.now.year %>
   </div>
   <div class="field">
     <%= f.label :qq %><br />
@@ -52,7 +52,7 @@
   </div>
   <div class="field">
     <%= f.label :birthday %><br />
-    <%= f.date_select :birthday %>
+    <%= f.date_select :birthday,:start_year=>1988,:end_year=>Time.now.year-10 %>
   </div>
   <div class="field">
     <%= f.label :constellation %><br />
@@ -78,10 +78,7 @@
     <%= f.label :avatar %><br />
     <%= f.text_field :avatar %>
   </div>
-  <div class="field">
-    <%= f.label :graduation %><br />
-    <%= f.date_select :graduation %>
-  </div>
+  
   <div class="field">
     <%= f.label :role %><br />
     <%= f.text_field :role %>

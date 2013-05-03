@@ -1,4 +1,6 @@
-<div class="custom_stast_comment">
+
+
+  <div class="set_graduation" style="margin:20px;">
 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
@@ -13,9 +15,9 @@
     </div>
   <% end %>
   
-  <div class="field">
-    <%= f.label :custom_status_comment %><br />
-    <%= f.text_area :custom_status_comment,:rows => 6 %>
+	<div class="field">
+    <%= f.label :graduation %><br />
+    <%= f.date_select :graduation %>
   </div>
   <div class="actions">
     <%= f.submit %>

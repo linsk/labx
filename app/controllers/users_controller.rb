@@ -63,6 +63,20 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def set_graduation
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      if current_user.admin? #TODO if user_agent == mobile
+        format.html # show.html.erb
+        format.json { render json: @user }
+      else
+        format.html { redirect_to root_path,notice: 'r u admin?'  }
+      end
+      
+    end
+  end
+
   # POST /users
   # POST /users.json
   def create

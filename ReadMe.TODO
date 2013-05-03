@@ -12,6 +12,7 @@ Reflesh time √
  ✔ 自动状态信息输出 @done (13-05-01 13:19)
  ✔ 自定义状态输出 @done (13-05-01 13:58)
  ☐ ActionController::RoutingError (No route matches [GET] "/auth/failure")
+ ☐ login page design
  ✔ 权限 @done (13-05-03 11:19)
  ✔ Stauts_card_View @done (13-05-01 15:38)
  ✔ 反向代理checkin问题  X-Forwarded-For @done (13-05-01 19:25)
@@ -19,7 +20,8 @@ Reflesh time √
  ☐ devices #Checked in from iPhone/Android/Mac/PC
  ☐ 多团队
  Users#show => #mshow when user-agent == "mobile"
-
+ ✔ 毕业设置 @done (13-05-03 12:39)
+ ✔ 生日、加入时间的开始-结束年份 @done (13-05-03 12:39)
  Ranked:
  按 周 月 年 总 
  ☐ office时间

@@ -100,11 +100,13 @@
   <b>加入实验室时间:</b>
   <span class="span_none"><%= @user.jointime %></span>
 </p>
+
+<% if @user.graduation %>
 <p>
   <b>从实验室毕业时间:</b>
-  <span class="span_none"><%= @user.graduation %></span>
+  <span class="span_none"><%= @user.graduation  %></span>
 </p>
-
+<% end %>
 
 <p>
   <b>城市:</b>
