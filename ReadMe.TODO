@@ -21,13 +21,16 @@ Reflesh time √
  ✔ Stauts_card_View @done (13-05-01 15:38)
  ✔ 反向代理checkin问题  X-Forwarded-For @done (13-05-01 19:25)
  ☐ session多域名支持 http://stackoverflow.com/questions/4060333/what-does-rails-3-session-store-domain-all-really-do
- ☐ 登录，new，update 跳转反向代理
  ✔ devices #Checked in from iPhone/Android/Mac/PC @done (13-05-03 16:13)
  ☐ 多团队支持
  ✔ Users#show => #mshow when user-agent == "mobile" @done (13-05-03 16:45)
  ☐ 统计的算法检查
  ✔ 毕业设置 @done (13-05-03 12:39)
  ✔ 生日、加入时间的开始-结束年份 @done (13-05-03 12:39)
+ ☐ 登出链接
+ ☐ 跳回操作前的页面 post put login
+ ☐ 登录，new，update 跳转反向代理
+
  Ranked:
  按 周 月 年 总 
  ☐ office时间

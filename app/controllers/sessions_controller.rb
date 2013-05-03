@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController  
   def new
     # Stuff to display on the login-page.
+    redirect_to root_path if current_user
   end
   
   def create
