@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def must_loged_in  #(:path,:notice)
-    redirect_to root_path, notice: "Must be loged in." if !signed_in? 
+    redirect_to "/login", notice: "Must be loged in." if !signed_in? 
   end
 
   def from_here

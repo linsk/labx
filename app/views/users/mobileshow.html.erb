@@ -63,18 +63,27 @@
 </p>
 <p>
   <b>Weibo:</b>
-  <span><%= @user.weibo %></span>
-    <% if connected?("weibo") %>
-      <%= link_to "disconnect weibo", "/auth/weibo/disconnect" %>
+
+
+    <% if @user != current_user %>
+    <span><%= @user.weibo %></span>
+
+    <% elsif connected?("weibo") %>
+      <span><%= @user.weibo %>(
+
+      <%= link_to "X", "/auth/weibo/disconnect" %>)</span>
     <% else %>
       <span><%= link_to "Connect your weibo", "/auth/weibo/" %></span>
     <% end %>
 </p>
 <p>
   <b>Github:</b>
-  <span><%= @user.github %></span>
-    <% if connected?("github") %>
-      <%= link_to "disconnect github", "/auth/github/disconnect" %>
+
+    <% if @user != current_user %>
+    <span><%= @user.github %></span>
+
+    <% elsif connected?("github") %>
+    <span><%= @user.github %>(<%= link_to "X", "/auth/github/disconnect" %>)</span>
     <% else %>
      <span> <%= link_to "Connect your github", "/auth/github/" %></span>
     <% end %>

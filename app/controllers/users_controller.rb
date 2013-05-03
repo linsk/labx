@@ -1,25 +1,30 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  def index
+  def index 
+
     @users = User.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
+      if current_user && current_user.admin?
+        format.html # index.html.erb
+        format.json { render json: @users }
+      else
+        format.html { redirect_to "/mshow/%s" % params[:id]  }
+      end
     end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-       
-
     @user = User.find(params[:id])
 
     respond_to do |format|
       if current_user #TODO if user_agent == mobile
         format.html { redirect_to "/mshow/%s" % params[:id]  }
+      elsif !current_user
+        format.html { redirect_to "/login",notice: 'please login'  }
       else
         format.html # show.html.erb
         format.json { render json: @user }
@@ -32,8 +37,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
+      if current_user
+        format.html # show.html.erb
+        format.json { render json: @user }
+      else
+        format.html { redirect_to "/login",notice: 'please login'  }
+      end
+      
     end
   end
 
@@ -74,7 +84,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user == current_user &&  @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -88,7 +98,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
+    @user.destroy if @user == current_user || current_user.admin?
 
     respond_to do |format|
       format.html { redirect_to users_url }

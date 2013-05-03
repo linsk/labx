@@ -12,7 +12,7 @@ Reflesh time √
  ✔ 自动状态信息输出 @done (13-05-01 13:19)
  ✔ 自定义状态输出 @done (13-05-01 13:58)
  ☐ ActionController::RoutingError (No route matches [GET] "/auth/failure")
- ☐ 权限
+ ✔ 权限 @done (13-05-03 11:19)
  ✔ Stauts_card_View @done (13-05-01 15:38)
  ✔ 反向代理checkin问题  X-Forwarded-For @done (13-05-01 19:25)
  ☐ session多域名支持 http://stackoverflow.com/questions/4060333/what-does-rails-3-session-store-domain-all-really-do

@@ -27,7 +27,7 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   end
 
   def admin?
-    self.email == "linsk@linsk.cn"
+    self.email == "sk@mothin.com"
   end
 
   def nick_or_name
