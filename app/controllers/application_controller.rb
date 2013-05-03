@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   protected
 
-  helper_method :test_info,:current_user, :signed_in?,:from_here,:must_logedin,:connected?
+  helper_method :user_device,:test_info,:current_user, :signed_in?,:from_here,:must_logedin,:connected?
 
   # rescue_from CanCan::AccessDenied do |exception|
   #   redirect_to root_url, :alert => exception.message
@@ -27,13 +27,20 @@ class ApplicationController < ActionController::Base
   end
 
   def from_here
-    request.env['HTTP_X_FORWARDED_FOR'].include?(OFFICE_IP)? "office" :  "online"
+    ip = request.env['HTTP_X_FORWARDED_FOR'] ||= request.remote_ip
+    ip.include?(OFFICE_IP) ? "office" :  "online"
+  end
+
+  def user_device
+    ua = request.env['HTTP_USER_AGENT']
+    ua = UserAgent.parse(ua)
+    ua.platform
   end
 
   def test_info
     #request.server_name + " - " + request.remote_ip
     # @test_info = request.remote_ip
-    @test_info = request.env['HTTP_X_FORWARDED_FOR']
+    #@test_info = request.env['HTTP_X_FORWARDED_FOR']
     #@test_info.class
     #request.env['HTTP_USER_AGENT'] √
   end

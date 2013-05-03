@@ -24,7 +24,7 @@
 			</div>
 
 			<div class="leave_or_from">
-				<%= user.status == "offline" ? user.leaved : "from iphone"%>
+				<%= user.status == "offline" ? user.leaved : current_user.logs.last.device%>
 			</div>
 
 		</div>

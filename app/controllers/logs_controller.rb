@@ -15,7 +15,7 @@ class LogsController < ApplicationController
 				@total.end = @pre_log.updated_at
 				@total.counter = @total.end - @total.start
 				@total.where_online = @pre_log.where
-				# @total.device = iphone/mac/pc/android
+				@total.device = @pre_log.device
 				@total.save
 
 				create_new_total = true
@@ -23,7 +23,7 @@ class LogsController < ApplicationController
 				#如果回到office,自动清空自定义状态说明
 			end
 			#ToDo 减少创建log记录
-			@log = current_user.logs.create(:where => from_here)
+			@log = current_user.logs.create(:where => from_here,:device => user_device)
 			current_user.totals.create(:start => @log.updated_at) if create_new_total
 		end
 

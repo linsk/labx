@@ -20,11 +20,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+
     respond_to do |format|
-      if current_user #TODO if user_agent == mobile
-        format.html { redirect_to "/mshow/%s" % params[:id]  }
-      elsif !current_user
+      if !current_user
         format.html { redirect_to "/login",notice: 'please login'  }
+      elsif  !"Windows Macintosh".include?(user_device)   #好脏...噗
+         format.html { redirect_to "/mshow/%s" % params[:id]  }
       else
         format.html # show.html.erb
         format.json { render json: @user }
