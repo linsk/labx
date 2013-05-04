@@ -26,18 +26,7 @@ class SessionsController < ApplicationController
         # associate the authentication
         @authentication.user = current_user
         @authentication.save
-        if  @authentication.provider == "weibo"
-          current_user.nick = auth[:info][:nickname]   
-          current_user.avatar = auth[:info][:image]
-          current_user.weibo = auth[:info][:urls][:Weibo]
-        end
-        if @authentication.provider == "github"
-          current_user.github = auth[:info][:urls][:GitHub]
-          current_user.email = auth[:info][:email] if !current_user.email
-          current_user.avatar = auth[:info][:image] if !current_user.avatar
-          current_user.website = auth[:info][:urls][:Blog]
-        end
-        current_user.save
+        
         redirect_to root_path, notice: "Account successfully authenticated"
       end
     else # no user is signed_in
@@ -58,17 +47,29 @@ class SessionsController < ApplicationController
         else
           # otherwise we have to create a user with the auth hash
           u = User.create_with_omniauth(auth)
-          # 为新用户初始化一条log记录。
           # NOTE: we will handle the different types of data we get back
           # from providers at the model level in create_with_omniauth
-          
+          #weibo 或者 github第一次验证加上一些资料
+          if  @authentication.provider == "weibo"
+            u.nick = auth[:info][:nickname]   
+            u.avatar = auth[:info][:image]
+            u.weibo = auth[:info][:urls][:Weibo]
+          end
+          if @authentication.provider == "github"
+            u.github = auth[:info][:urls][:GitHub]
+            u.avatar = auth[:info][:image] unless u.avatar
+            u.website = auth[:info][:urls][:Blog]
+          end
+          u.save
         end
         # We can now link the authentication with the user and log him in
         u.authentications << @authentication
+        u.recodes_init
 
         
         self.current_user = u
         redirect_to root_path, notice: "Welcome to The app!"
+
       end
     end
   end

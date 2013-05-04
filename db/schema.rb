@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430191113) do
+ActiveRecord::Schema.define(:version => 20130503172113) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(:version => 20130430191113) do
   end
 
   create_table "logs", :force => true do |t|
-    t.string   "where"
+    t.string   "where_online"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "device"
   end
 

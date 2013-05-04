@@ -1,3 +1,11 @@
 <div id="footer">
-	<p>Copyright 2013 © Mothin.com <span class="test_info"> <% user_device %></span>
+	<p>Copyright 2013 © Mothin.com <span class="test_info"> <%= test_info %></span>
+		<span class="log_in_or_out_links">
+			<% if current_user %>
+			<%=link_to "Logout",'/logout'   %>
+			<% else %>
+			<%=link_to "Login",'/login' %>
+			<% end %>
+		</span>
+		
 </div>

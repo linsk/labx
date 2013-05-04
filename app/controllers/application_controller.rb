@@ -37,11 +37,13 @@ class ApplicationController < ActionController::Base
     ua.platform
   end
 
+ 
   def test_info
-    #request.server_name + " - " + request.remote_ip
-    # @test_info = request.remote_ip
-    #@test_info = request.env['HTTP_X_FORWARDED_FOR']
-    #@test_info.class
+    #Time.now.midnight.in_time_zone('Beijing')
+    #request.raw_host_with_port()
+    #request.url
+    # @test_info = request.remote_ip√
+    #@test_info = request.env['HTTP_X_FORWARDED_FOR']√
     #request.env['HTTP_USER_AGENT'] √
   end
 

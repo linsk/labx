@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         format.html # index.html.erb
         format.json { render json: @users }
       else
-        format.html { redirect_to "/mshow/%s" % params[:id]  }
+        format.html { redirect_to login_url }
       end
     end
   end
@@ -36,7 +36,6 @@ class UsersController < ApplicationController
 
   def mobileshow
     @user = User.find(params[:id])
-
     respond_to do |format|
       if current_user
         format.html # show.html.erb
@@ -44,7 +43,6 @@ class UsersController < ApplicationController
       else
         format.html { redirect_to "/login",notice: 'please login'  }
       end
-      
     end
   end
 
@@ -68,7 +66,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if current_user.admin? #TODO if user_agent == mobile
+      if current_user.admin?
         format.html # show.html.erb
         format.json { render json: @user }
       else

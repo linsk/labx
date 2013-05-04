@@ -18,9 +18,11 @@ class User < OmniAuth::Identity::Models::ActiveRecord
     # eg. case auth['provider'] ..
     auth_has_an_nick = auth['info']['nickname'] ||= auth['provider'] + auth['uid'].to_s
     auth_has_an_email = auth['info']['email'] ||= auth['provider'] + auth['uid'].to_s + '@' + 'mail.com'
+    
     avatar_image = auth[:info][:image] ||= []
     temp_password = rand(36**10).to_s(36) 
     create(name: auth_has_an_nick, email: auth_has_an_email, avatar: avatar_image, password:temp_password, password_confirmation:temp_password)
+
     # IMPORTANT: when you're creating a user from a strategy that
     # is not identity, you need to set a password, otherwise it will fail
     # I use: user.password = rand(36**10).to_s(36)
@@ -38,27 +40,19 @@ class User < OmniAuth::Identity::Models::ActiveRecord
     self.name ||= self.nick
   end
 
-  def status #TODO为新注册用户初始化一个log记录。
-    self.logs.create(:where => "online") if self.logs == []
-    self.logs.last.updated_at > Time.now - FRESH_TIME ? self.logs.last.where : "offline"
+  def status
+    @pre_log = self.logs.last
+    @pre_log.updated_at + FRESH_TIME > Time.now ? @pre_log.where_online : "offline"
   end
 
-  # def status_comment
-  #   self.custom_status_comment || self.status_comments
-  # end
+
+  def recodes_init  #model调用controller的方法 
+    self.logs.create(:where_online => "online",:device => "Windows")
+    self.totals.create(:start => Time.now)
+  end
 
   def status_comments
-    # case self.status
-    # when "office"
-    #   #今天几点就来到办公室的... 总共时间totals中的时间+（最后一个Time.now-start）.格式化时间长度？
-    #    self.totalset("office")
-    # when "online"
-    #   #今天上线几个小时了...
-    #   #"always online"
-    #   self.totalset("online")
-    # else
-    #   self.leaved
-    # end
+ 
     if self.status == "offline"
       #今天来过否?
       self.came
@@ -70,45 +64,63 @@ class User < OmniAuth::Identity::Models::ActiveRecord
 
   def totalset(office_online)#*args
     #tt = Time.now.midnight if timetype == "day"  #按 日 周 月 年 查询
-    officetime = Total.where("start > ? AND where_online = ? AND user_id=?", Time.now.midnight, office_online, self.id) 
-    ""
+    from_today = Time.now.midnight.in_time_zone('Beijing')
+    officetime = self.totals.where("start > ? AND where_online = ?", from_today, office_online) 
+    office_now = self.logs.where("where_online=? AND updated_at>?",office_online,from_today).first
+
     if officetime != []
       start_at = officetime.first.start.in_time_zone('Beijing').to_s(:time)
       timesum = officetime.sum("counter").to_s.to_f 
       timesum =timesum+(Time.now - officetime.last.start)#未汇计的部分时间
-      timesum = longtime(timesum)
-      "Start from %s, %s total time: %s " % [start_at,office_online,timesum]
+    elsif office_now
+      start_at = office_now.updated_at.in_time_zone('Beijing').to_s(:time)
+      timesum = Time.now - office_now.updated_at
+    else
+      timesum = nil#没有今天的记录
     end
+    timesum = longtime(timesum) if timesum
+    "Start from %s, %s total time: %s " % [start_at,office_online,timesum] if timesum
   end
 
   def came
     office_online = "office" 
-    officetime = Total.where("start > ? AND where_online = ? AND user_id=?", Time.now.midnight, office_online, self.id)
-    if officetime == []
-      ""#Did not come today
-    else
+    from_today = Time.now.midnight.in_time_zone('Beijing')
+    officetime = self.totals.where("start > ? AND where_online = ?",from_today, office_online)
+    lastoday = self.logs.where("where_online=? AND updated_at>?",office_online,from_today).last
+
+    if officetime != []
       start_at = officetime.first.start.in_time_zone('Beijing').to_s(:time)
       timesum = officetime.sum("counter").to_s.to_f
-      timesum =timesum+(Time.now - officetime.last.start)
-      timesum = longtime(timesum)
-      "Came from %s, %s total time: %s " % [start_at,office_online,timesum]
+      timesum =timesum+(lastoday.updated_at - officetime.last.start)
+    elsif lastoday
+      firstoday = self.logs.where("where_online=? AND updated_at>?",office_online,from_today).first
+      start_at = firstoday.updated_at.in_time_zone('Beijing').to_s(:time)
+      timesum = lastoday.updated_at - firstoday.updated_at
+    else
+      timesum = nil #Did not come today
     end
+    timesum = longtime(timesum)  if timesum
+    "Came from %s, %s total time: %s " % [start_at,office_online,timesum] if timesum
   end
 
   def leaved
     p = "leave "
-    t = Time.now - self.logs.last.updated_at #TODO 离开办公室
-    if t > 86400
-      d = t / 86400
-      p + d.to_i.to_s + " day ago."
-    elsif t >3600
-      h = t / 3600
-      p + h.to_i.to_s + "hour ago."
-    else
-      t > 60 ? m = t/60 : m=1
-      p + m.to_i.to_s+" min ago."
-    end  
+    officelast = self.logs.where("where_online=?",'office').last
+    if officelast
+      t = Time.now - officelast.updated_at
+      if t > 86400
+        d = t / 86400
+        p + d.to_i.to_s + " day ago."
+      elsif t >3600
+        h = t / 3600
+        p + h.to_i.to_s + "hour ago."
+      else
+        t > 60 ? m = t/60 : m=1
+        p + m.to_i.to_s+" min ago."
+      end  
+    end
   end
+
   def longtime(t)
     t=t.to_i
     ds = t > 86400 ? time % 86400 : t

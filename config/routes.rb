@@ -4,6 +4,7 @@ Mothinlab::Application.routes.draw do
 
   match '/auth/:provider/callback', to: 'sessions#create'
   match '/auth/:provider/disconnect', to: 'users#disconnect'
+  match '/auth/failure', to: 'sessions#failure'
   match '/login', to: 'sessions#new'
   match '/logout', to: 'sessions#destroy'
 
