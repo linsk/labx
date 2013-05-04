@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         format.html # index.html.erb
         format.json { render json: @users }
       else
-        format.html { redirect_to login_url }
+        format.html { redirect_to login_url notice: 'r u admin?'}
       end
     end
   end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       if !current_user
         format.html { redirect_to "/login",notice: 'please login'  }
       elsif  !"Windows Macintosh".include?(user_device)   #好脏...噗
-         format.html { redirect_to "/mshow/%s" % params[:id]  }
+         format.html { redirect_to CUSTOM_DOMAIN + request.original_fullpath() }
       else
         format.html # show.html.erb
         format.json { render json: @user }
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
         format.html # show.html.erb
         format.json { render json: @user }
       else
-        format.html { redirect_to root_path,notice: 'r u admin?'  }
+        format.html { redirect_to CUSTOM_DOMAIN,notice: 'r u admin?'  }
       end
       
     end
@@ -82,7 +82,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to CUSTOM_DOMAIN+"/users/"+@user.id.to_s, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -98,7 +98,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user == current_user &&  @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to CUSTOM_DOMAIN+"/users/"+@user.id.to_s, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -122,6 +122,6 @@ class UsersController < ApplicationController
   def disconnect
     @auth = Authentication.find_by_provider_and_user_id(params[:provider],current_user)
     @auth.destroy if @auth
-    redirect_to root_path, :notice => "Disconnect successfully"
+    redirect_to CUSTOM_DOMAIN, :notice => "Disconnect successfully"
   end
 end

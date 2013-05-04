@@ -39,6 +39,9 @@ class ApplicationController < ActionController::Base
 
  
   def test_info
+    notice
+    #request.original_fullpath()
+    #request.original_url()
     #Time.now.midnight.in_time_zone('Beijing')
     #request.raw_host_with_port()
     #request.url
