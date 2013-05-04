@@ -35,10 +35,12 @@ PC:
  ✔ 生日、加入时间的开始-结束年份 @done (13-05-03 12:39)
  ✔ 登出链接 @done (13-05-03 22:52)
  ☐ 跳回操作前的页面 post put login
- ☐ 登录，new，update 跳转反向代理
+ ☐ 登录，new，update 跳转反向代理  #doing
  ☐ session多域名支持 http://stackoverflow.com/questions/4060333/what-does-rails-3-session-store-domain-all-really-do
  ☐ 多团队支持
+ ✔ session有效期 @done (13-05-05 00:31)
  ☐ 统计的算法检查
+ ☐ 本土化  #doing
 
  Ranked:
  按 周 月 年 总 
