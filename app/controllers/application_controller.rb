@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def must_loged_in  #(:path,:notice)
-    redirect_to "/login", notice: "Must be loged in." if !signed_in? 
+    redirect_to CUSTOM_DOMAIN + "/login", notice: "Must be loged in." if !signed_in? 
   end
 
   def from_here
@@ -36,7 +36,6 @@ class ApplicationController < ActionController::Base
     ua = UserAgent.parse(ua)
     ua.platform
   end
-
  
   def test_info
     notice

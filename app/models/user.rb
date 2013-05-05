@@ -67,11 +67,12 @@ class User < OmniAuth::Identity::Models::ActiveRecord
     from_today = Time.now.midnight.in_time_zone('Beijing')
     officetime = self.totals.where("start > ? AND where_online = ?", from_today, office_online) 
     office_now = self.logs.where("where_online=? AND updated_at>?",office_online,from_today).first
+    lastoday = self.logs.where("where_online=? AND updated_at>?",office_online,from_today).last
 
     if officetime != []
       start_at = officetime.first.start.in_time_zone('Beijing').to_s(:time)
       timesum = officetime.sum("counter").to_s.to_f 
-      timesum =timesum+(Time.now - officetime.last.start)#未汇计的部分时间
+      timesum =timesum+(lastoday.updated_at - officetime.last.start)#未汇计的部分时间
     elsif office_now
       start_at = office_now.updated_at.in_time_zone('Beijing').to_s(:time)
       timesum = Time.now - office_now.updated_at

@@ -8,7 +8,6 @@ Mac:
 Macruby实现 webview
 
 PC:
- ☐ Chrome EXtension
 
 
 有人在吗？:
@@ -37,13 +36,18 @@ PC:
  ✔ 毕业设置 @done (13-05-03 12:39)
  ✔ 生日、加入时间的开始-结束年份 @done (13-05-03 12:39)
  ✔ 登出链接 @done (13-05-03 22:52)
- ☐ 跳回操作前的页面 post put login
+ ☐ 跳回操作前的页面 post put login #cookies实现
  ✔ 登录，create，update 跳转反向代理   @done (13-05-05 01:35)
- ☐ session多域名支持 http://stackoverflow.com/questions/4060333/what-does-rails-3-session-store-domain-all-really-do
+ ✘ session多域名支持 http://stackoverflow.com/questions/4060333/what-does-rails-3-session-store-domain-all-really-do @cancelled (13-05-05 01:57)
  ☐ 多团队支持
  ✔ session有效期 @done (13-05-05 00:31)
  ☐ 统计的算法检查
+ 重构统计的方法 参数「现在，过去，在哪，时间段」
  ☐ 本土化  #doing
+ ☐ 保存头像
+
+ Chrome EXtension:
+ ☐ beta
 
  Ranked:
  按 周 月 年 总 

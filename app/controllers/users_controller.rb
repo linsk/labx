@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         format.html # index.html.erb
         format.json { render json: @users }
       else
-        format.html { redirect_to login_url notice: 'r u admin?'}
+        format.html { redirect_to CUSTOM_DOMAIN + '/login',notice:'r u admin?' }
       end
     end
   end
@@ -20,11 +20,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-
     respond_to do |format|
-      if !current_user
-        format.html { redirect_to "/login",notice: 'please login'  }
-      elsif  !"Windows Macintosh".include?(user_device)   #好脏...噗
+      must_loged_in
+      if  !"Windows Macintosh".include?(user_device)   #好脏...噗
          format.html { redirect_to CUSTOM_DOMAIN + request.original_fullpath() }
       else
         format.html # show.html.erb
@@ -37,12 +35,10 @@ class UsersController < ApplicationController
   def mobileshow
     @user = User.find(params[:id])
     respond_to do |format|
-      if current_user
-        format.html # show.html.erb
-        format.json { render json: @user }
-      else
-        format.html { redirect_to "/login",notice: 'please login'  }
-      end
+      must_loged_in
+      format.html # show.html.erb
+      format.json { render json: @user }
+      
     end
   end
 
