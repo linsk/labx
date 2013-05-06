@@ -42,7 +42,7 @@ class User < OmniAuth::Identity::Models::ActiveRecord
 
   def status
     @pre_log = self.logs.last
-    @pre_log.updated_at + FRESH_TIME > Time.now ? @pre_log.where_online : "offline"
+    @pre_log.updated_at + self.fresh_time > Time.now ? @pre_log.where_online : "offline"
   end
 
 
@@ -132,4 +132,9 @@ class User < OmniAuth::Identity::Models::ActiveRecord
     m = hs/60
      "%s hours %s minutes" % [h,m]
   end
+
+  def fresh_time
+    self.team_id == 1 ? FRESH_TIME : OTHER_TEAM_REFRESH_TIME  #120s and 600s
+  end
+
 end

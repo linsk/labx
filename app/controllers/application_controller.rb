@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   protected
 
-  helper_method :user_device,:test_info,:current_user, :signed_in?,:from_here,:must_logedin,:connected?
+  helper_method :user_device,:test_info,:current_user, :signed_in?,:from_here,:must_logedin,:connected?,:custom_domain,:fresh_time
 
   # rescue_from CanCan::AccessDenied do |exception|
   #   redirect_to root_url, :alert => exception.message
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def must_loged_in  #(:path,:notice)
-    redirect_to CUSTOM_DOMAIN + "/login", notice: "Must be loged in." if !signed_in? 
+    redirect_to self.custom_domain + "/login", notice: "Must be loged in." if !signed_in? 
   end
 
   def from_here
@@ -47,6 +47,14 @@ class ApplicationController < ActionController::Base
     # @test_info = request.remote_ip√
     #@test_info = request.env['HTTP_X_FORWARDED_FOR']√
     #request.env['HTTP_USER_AGENT'] √
+  end
+
+  def fresh_time
+    current_user.team_id == 1 ? FRESH_TIME : OTHER_TEAM_REFRESH_TIME  #120s and 600s
+  end
+
+  def custom_domain
+    CUSTOM_DOMAIN || root_url
   end
 
 #User connected provider? return booleam

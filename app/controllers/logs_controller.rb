@@ -5,8 +5,8 @@ class LogsController < ApplicationController
 		@pre_log = current_user.logs.last #|| current_user.logs.create(:where_online => from_here,:device => user_device) #一般登录完会跳转到status,在那边创建？
 		create_new_total = nil
 
-		#离线过的话 #判断在线地点 #TODO设备是否改变 	#FRESH_TIME可以加上一些容差情况。 
-		if Time.now - @pre_log.updated_at > FRESH_TIME || @pre_log.where_online != from_here 
+		#离线过的话 #判断在线地点 #TODO设备是否改变 	#fresh_time可以加上一些容差情况。 
+		if Time.now - @pre_log.updated_at > fresh_time || @pre_log.where_online != from_here 
 
 		#如果离线过，就记录上一次的最后一条记录、统计上一次时间
 			@total = current_user.totals.last #|| current_user.totals.create(:start => @pre_log.updated_at)
