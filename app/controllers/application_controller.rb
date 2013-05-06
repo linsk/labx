@@ -50,11 +50,11 @@ class ApplicationController < ActionController::Base
   end
 
   def fresh_time
-    current_user.team_id == 1 ? FRESH_TIME : OTHER_TEAM_REFRESH_TIME  #120s and 600s
+    current_user ? FRESH_TIME : OTHER_TEAM_REFRESH_TIME # current_user.team_id == 1 #120s and 600s
   end
 
   def custom_domain
-    CUSTOM_DOMAIN || root_url
+    root_url
   end
 
 #User connected provider? return booleam

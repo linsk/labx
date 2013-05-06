@@ -134,7 +134,7 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   end
 
   def fresh_time
-    self.team_id == 1 ? FRESH_TIME : OTHER_TEAM_REFRESH_TIME  #120s and 600s
+    self ? FRESH_TIME : OTHER_TEAM_REFRESH_TIME  #self.team_id = 1 #120s and 600s
   end
 
 end
