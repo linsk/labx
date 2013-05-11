@@ -24,6 +24,10 @@ class LogsController < ApplicationController
 		current_user.totals.create(:start => @log.updated_at) if create_new_total
 	end
 
+	def checkin_from_chromeextension
+		self.log
+	end
+
 	def status
 		@users = User.all
 	end

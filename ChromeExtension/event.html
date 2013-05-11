@@ -2,15 +2,19 @@
 	<head>
 		<script type="text/javascript">
 		  var iframe = window.getElementsByTagName( "iframe" )[ 0 ];
-		  // alert( "Frame title: " + iframe.contentWindow.title );
+		   alert( "Frame title: " + iframe.contentWindow.title );
+		</script>
+		<script>
+		setTimeout("self.location.reload();",110000); //2.min - 10s
 		</script>
 	</head>
 	<body>
 				
 
-		<iframe src="http://mothinlab.eu01.aws.af.cm/checkin" width="300" height="300">
-			<!-- http://labs.mothin.com/checkin -->
+		<iframe src="http://mothinlab.eu01.aws.af.cm/checkinfromchrome">
+			<!-- http://labs.mothin.com/checkinfromchrome -->
 		</iframe>
+
 
 
 

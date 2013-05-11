@@ -11,6 +11,7 @@ Mothinlab::Application.routes.draw do
   match '/mshow/:id', to:'users#mobileshow'
 
   match '/checkin', to: 'logs#log'
+  match '/checkinfromchrome', to: 'logs#checkin_from_chromeextension'
   match '/status',  to: 'logs#status'
   match '/users/:id/set_graduation', to: "users#set_graduation"
   # The priority is based upon order of creation:
