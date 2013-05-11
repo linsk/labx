@@ -1,5 +1,5 @@
 <%= current_user.name %>
 
 <script>
-setTimeout("self.location.reload();",60000); //1.min
+setTimeout("self.location.reload();",<%= (fresh_time-10)*1000 %>); //2.min - 10s
 </script>

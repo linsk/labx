@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424043106) do
+ActiveRecord::Schema.define(:version => 20130503172113) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider"
@@ -22,11 +22,25 @@ ActiveRecord::Schema.define(:version => 20130424043106) do
   end
 
   create_table "logs", :force => true do |t|
-    t.string   "where"
+    t.string   "where_online"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "device"
   end
+
+  create_table "totals", :force => true do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.float    "counter",      :limit => 255
+    t.integer  "user_id"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.string   "device"
+    t.string   "where_online"
+  end
+
+  add_index "totals", ["user_id"], :name => "index_totals_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "nick"
@@ -49,9 +63,10 @@ ActiveRecord::Schema.define(:version => 20130424043106) do
     t.date     "graduation"
     t.string   "role"
     t.text     "introduce"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "password_digest"
+    t.text     "custom_status_comment"
   end
 
 end

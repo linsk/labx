@@ -1,0 +1,31 @@
+<%= render :partial => "/logs/mobile_nav" %>
+
+<div id="login_mobile_view">
+	<h3>Login</h3>
+
+	<%= form_tag "/auth/identity/callback" do %>
+	<div class="field">
+		<span><%= label_tag :auth_key, "Email" %>
+		</span>
+		<div><%= text_field_tag :auth_key %></div>
+	</div>
+
+
+	<div class="field">
+		<span><%= label_tag :password %></span>
+		<div><%= password_field_tag :password %></div>
+	</div>
+
+	<div class="actions"><%= submit_tag "Login" %></div>
+	<% end %>
+
+	<div class="oauth">
+
+		<span>Sign in with <%= link_to " Weibo.com","/auth/weibo" %> or <%= link_to " Github.com","/auth/github" %></span>
+		
+	</div>
+
+
+
+</div>
+<%= render :partial => 'layouts/mobile_footer' %>

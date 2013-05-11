@@ -5,8 +5,16 @@ Mothinlab::Application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create'
   match '/auth/:provider/disconnect', to: 'users#disconnect'
 
+  match '/auth/failure', to: 'sessions#failure'
+  match '/login', to: 'sessions#new'
+  match '/logout', to: 'sessions#destroy'
+
+  match '/mshow/:id', to:'users#mobileshow'
+
   match '/checkin', to: 'logs#log'
+  match '/checkinfromchrome', to: 'logs#checkin_from_chromeextension'
   match '/status',  to: 'logs#status'
+  match '/users/:id/set_graduation', to: "users#set_graduation"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -56,7 +64,7 @@ Mothinlab::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'users#index'
+   root :to => 'logs#status'
 
   # See how all your routes lay out with "rake routes"
 

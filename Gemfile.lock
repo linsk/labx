@@ -172,6 +172,7 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    useragent (0.6.0)
 
 PLATFORMS
   ruby
@@ -199,3 +200,4 @@ DEPENDENCIES
   simple_form
   sqlite3
   uglifier (>= 1.0.3)
+  useragent

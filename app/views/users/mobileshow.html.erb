@@ -1,0 +1,131 @@
+<%= render :partial => "/logs/mobile_nav" %>
+
+<div id="mpshow">
+
+<h3><%= @user.name_or_nick %> 's Profile</h3>
+
+<%= render 'custom_status_comment' if @user == current_user %>
+
+<%= image_tag @user.avatar if @user.avatar %>
+<h4>基本信息</h4>
+<p>
+  <b>Nick:</b>
+  <span><%= @user.name_or_nick  %></span>
+</p>
+
+<p>
+  <b>职业定位:</b>
+  <span><%= @user.role %></span>
+</p>
+
+<p>
+  <b>签名:</b>
+  <span><%= @user.slogan %></span>
+</p>
+
+<p>
+  <b>生日:</b>
+  <span><%= @user.birthday %></span>
+</p>
+
+<p>
+  <b>星座:</b>
+  <span><%= @user.constellation %></span>
+</p>
+
+<h4>联络方式</h4>
+<p>
+  <b>电话:</b>
+  <span><%= @user.phonecall %></span>
+</p>
+<p>
+  <b>Email:</b>
+  <span><%= @user.email %></span>
+</p>
+<p>
+  <b>QQ:</b>
+  <span><%= @user.qq %></span>
+</p>
+<p>
+  <b>Website:</b>
+  <span><%= @user.website %></span>
+</p>
+
+<!-- Social network -->
+<h4>社交媒体</h4>
+<p>
+  <b>Weixin:</b>
+  <span><%= @user.weixin %></span>
+</p>
+
+<p>
+  <b>Twitter:</b>
+  <span><%= @user.twitter %></span>
+</p>
+<p>
+  <b>Weibo:</b>
+
+
+    <% if @user != current_user %>
+    <span><%= @user.weibo %></span>
+
+    <% elsif connected?("weibo") %>
+      <span><%= @user.weibo %>(
+
+      <%= link_to "X", "/auth/weibo/disconnect" %>)</span>
+    <% else %>
+      <span><%= link_to "Connect your weibo", "/auth/weibo/" %></span>
+    <% end %>
+</p>
+<p>
+  <b>Github:</b>
+
+    <% if @user != current_user %>
+    <span><%= @user.github %></span>
+
+    <% elsif connected?("github") %>
+    <span><%= @user.github %>(<%= link_to "X", "/auth/github/disconnect" %>)</span>
+    <% else %>
+     <span> <%= link_to "Connect your github", "/auth/github/" %></span>
+    <% end %>
+</p>
+
+<p>
+  <b>Dribbble:</b>
+  <span><%= @user.dribbble %></span>
+</p>
+
+<h4>其他信息</h4>
+
+<p>
+  <b>加入实验室时间:</b>
+  <span class="span_none"><%= @user.jointime %></span>
+</p>
+
+<% if @user.graduation %>
+<p>
+  <b>从实验室毕业时间:</b>
+  <span class="span_none"><%= @user.graduation  %></span>
+</p>
+<% end %>
+
+<p>
+  <b>城市:</b>
+  <span><%= @user.city %></span>
+</p>
+
+
+
+
+
+
+<%= link_to 'Edit', edit_user_path(@user) %>
+
+
+
+<%= link_to 'Back', :back %>
+
+
+
+</div>
+<%= render :partial => 'layouts/mobile_footer' %>

@@ -2,13 +2,70 @@ Mothin Lab:
 
 
 Website:
+这个网站的首页将会放置在Labs.mothin.com，用来展示团队的文化、介绍，项目，以及团队成员的信息。
+
+Mac:
+Macruby实现 webview
+
+PC:
 
 
 有人在吗？:
+  这是一个小型app,其他没有钥匙的团队成员可以通过这个小应用查看实验室是否有人的情况，
+  /status 查看大家的状态，包括 在实验室「绿色」、 在线「紫色」、不在线三种状态。
+  不在实验室的同学可以注明原因，或者后面有兴趣的同学可以加上课程表的功能，通过课程表的情况来判断没来的原因是因为有课。
+  除此之外还显示「今天来过实验室 什么时候开始 持续...」、「今天什么时候开始来实验室，到现在一共多久...」
+  /checkin 这个URL可能还会发生改变，后面我们将这个URL加到电脑客户端或者Chrome Extensions中，来达成开机自动签到的目的。
+  ##可能不会考虑性能,即便这个项目有50个人使用，每个人每2分钟发送一次checkin写请求，似乎压力也不存在。
 
-Reflesh time
+  由于af免费套餐不再支持域名绑定，所以做了一些hack
 
 
-可扩展性:
+ ✔ Reflesh time √ @done (13-05-03 22:13)
+ ✔ #TODO 最后离开时间距离现在...多久  √ @done (13-05-01 11:12)
+ ✔ #TODO为新注册用户初始化一个Log、Total记录。 @done (13-05-04 23:30)
+ ✔ 自动状态信息输出 @done (13-05-01 13:19)
+ ✔ 自定义状态输出 @done (13-05-01 13:58)
+ ✔ ActionController::RoutingError (No route matches [GET] "/auth/failure") @done (13-05-03 23:44)
+ ✔ login page design @done (13-05-03 17:09)
+ ✔ 权限 @done (13-05-03 11:19)
+ ✔ Stauts_card_View @done (13-05-01 15:38)
+ ✔ 反向代理checkin问题  X-Forwarded-For @done (13-05-01 19:25)
+ ✔ devices #Checked in from iPhone/Android/Mac/PC @done (13-05-03 16:13)
+ ✔ Users#show => #mshow when user-agent == "mobile" @done (13-05-03 16:45)
+ ✔ 毕业设置 @done (13-05-03 12:39)
+ ✔ 生日、加入时间的开始-结束年份 @done (13-05-03 12:39)
+ ✔ 登出链接 @done (13-05-03 22:52)
+ ☐ 跳回操作前的页面 post put login #cookies实现
+ ✔ 登录，create，update 跳转反向代理   @done (13-05-05 01:35)
+ ✘ session多域名支持 http://stackoverflow.com/questions/4060333/what-does-rails-3-session-store-domain-all-really-do @cancelled (13-05-05 01:57)
+ ☐ 多团队支持
+ ✔ session有效期 @done (13-05-05 00:31)
+ ☐ 统计的算法检查
+ 重构统计的方法 参数「现在，过去，在哪，时间段」
+ ☐ 本土化  #doing
+ ☐ 保存头像
+ 统计的方法似乎在Model里实现不够科学，考虑Helpers
 
-效率分析 focusTime...
+ Chrome EXtension:
+ ☐ beta
+ ☐ 自动刷新有问题
+
+ Ranked:
+ 按 周 月 年 总 
+ ☐ office时间
+ ☐ online(提醒休息)
+
+
+ Report:
+ 用户的具体
+ ☐ online时间 仅限其他场所在线
+ ☐ office时间
+ ☐ 总上线时间 = online时间 + office时间
+  按 周 月 年 总 
+
+ Profile:
+ ✔ 个人信息 @done (13-05-03 03:26)
+ ✔ EDIT @done (13-05-03 03:26)
+ ✔ 自定义状态设置 @done (13-05-03 03:53)
+

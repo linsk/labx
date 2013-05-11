@@ -34,6 +34,7 @@ gem 'omniauth-identity'
 gem 'omniauth-github'
 #gem 'oauth_china'
 gem 'cancan'  
+gem 'useragent'
 
 
 gem 'cloudfoundry-jquery-rails'
