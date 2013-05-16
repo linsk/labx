@@ -36,7 +36,7 @@ gem 'omniauth-github'
 gem 'cancan'  
 gem 'useragent'
 
-gem 'activerecord-mysql-adapter'
+gem 'mysql2'
 
 gem 'cloudfoundry-jquery-rails'
 gem 'compass'
