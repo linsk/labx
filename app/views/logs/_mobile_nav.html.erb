@@ -1,8 +1,10 @@
 <div id="header">
 	<ul>
 		<li><%= link_to "Status", :controller=>"logs", :action=>"status" %></li>
-		<li><a href="#">Ranked</a></li> <!-- 排行榜 -->
-		<li><a href="#">Report</a></li> <!-- 分析报告（个人） -->
+		<li><a href="#"><img src="/assets/14.png"></a></li> <!-- 排行榜 -->
+		<li><a href="#"><img src="/assets/1.png"></a></li> <!-- 分析报告（个人） -->
+		<li><a href="#"><img src="/assets/12.png"></a></li>
+		<li><a href="#"><img src="/assets/2.png"></a></li>
 		<li><%= link_to current_user.nick_or_name,:controller =>"users", :action=>"mobileshow", :id=>current_user  if current_user %></li> <!-- 个人资料 -->
 	</ul>
 </div>
