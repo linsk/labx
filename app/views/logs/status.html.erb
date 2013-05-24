@@ -10,17 +10,16 @@
     <p class="online-status"><%= user.nick_or_name %></p>
   </div>
   <div class="span11">
-			<% if user.status != "office" && user.custom_status_comment %>
-
-    <p  class="time-status"><%= user.status_comments  %></p>
+		<% if user.status != "office" && user.custom_status_comment %>
+		<p  class="time-status"><%= user.status_comments  %></p>
 		<% end %>
 
     <h4><%= user.custom_status_comment %></h4>
-    
+
     <p class="pull-right leavetime_status"><%= user.status == "offline" ? user.leaved : user.logs.last.device %></p>
   </div>
   <div class="row bg"></div>
 </div>
 
-	<% end %>
+<% end %>
 <%= render :partial => 'layouts/mobile_footer' %>

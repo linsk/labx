@@ -17,11 +17,10 @@ group :production do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails', '~> 3.2'
+  gem 'bootstrap-sass', '~> 2.3.1.0'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
-  gem 'bootstrap-sass', '~> 2.2.1.1'
-  # gem 'bootstrap-google-sass', '>= 0.0.2'
   gem 'uglifier', '>= 1.0.3'
 end
 

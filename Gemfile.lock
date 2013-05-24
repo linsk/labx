@@ -44,7 +44,7 @@ GEM
       rake
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.2.1.1)
+    bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     builder (3.0.4)
     cancan (1.6.9)
@@ -186,7 +186,7 @@ DEPENDENCIES
   activerecord-mysql-adapter
   annotate
   bcrypt-ruby (~> 3.0.0)
-  bootstrap-sass (~> 2.2.1.1)
+  bootstrap-sass (~> 2.3.1.0)
   cancan
   cloudfoundry-jquery-rails
   coffee-rails (~> 3.2.1)
@@ -202,7 +202,7 @@ DEPENDENCIES
   omniauth-weibo-oauth2 (= 0.2.0)
   pry-rails
   rails (= 3.2.12)
-  sass-rails (~> 3.2.3)
+  sass-rails (~> 3.2)
   simple_form
   sqlite3
   uglifier (>= 1.0.3)
