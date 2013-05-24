@@ -1,40 +1,26 @@
 
 <%= render :partial => "mobile_nav" %>
 
-<div id="knock">
-	<!-- Open the door button -->
-</div>
 
-<div id="status">
 	<% @users.each do |user| %>
 
-		
-	<div class="card">
-		<div class="profile">
-			<%= link_to(image_tag(user.avatar,:alt=>user.status,:class=>user.status),"#" ) if user.avatar %>
-			<span><a href="#">@<%= user.nick_or_name %></a></span>
-		</div>
-
-		<div class="right_comments">
-
+<div class="span12 menber_list">
+  <div class="span1 teach-itme">
+    <%= link_to(image_tag(user.avatar,:alt=>user.status,:class=>user.status),"#" ) if user.avatar %>
+    <p class="online-status"><%= user.nick_or_name %></p>
+  </div>
+  <div class="span11">
 			<% if user.status != "office" && user.custom_status_comment %>
-			<div class="custom_comments">
-				<span><%= user.custom_status_comment %></span>				
-			</div>
-			<% end %>
 
-			<div class="statu_comments">
-					<p><%= user.status_comments  %></p>
-			</div>
+    <p  class="time-status"><%= user.status_comments  %></p>
+		<% end %>
 
-			<div class="leave_or_from">
-				<%= user.status == "offline" ? user.leaved : user.logs.last.device%>
-			</div>
-
-		</div>
-		
-	</div>
-	<% end %>
+    <h4><%= user.custom_status_comment %></h4>
+    
+    <p class="pull-right leavetime_status"><%= user.status == "offline" ? user.leaved : user.logs.last.device %></p>
+  </div>
+  <div class="row bg"></div>
 </div>
 
+	<% end %>
 <%= render :partial => 'layouts/mobile_footer' %>
