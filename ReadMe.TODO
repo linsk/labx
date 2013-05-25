@@ -46,6 +46,7 @@ PC:
  ☐ 本土化  #doing
  ☐ 保存头像
  统计的方法似乎在Model里实现不够科学，考虑Helpers
+ /mshow/1  未登录 DoubleRenderError
 
  Chrome EXtension:
  ☐ beta
