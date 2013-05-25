@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def must_loged_in  #(:path,:notice)
-    redirect_to self.custom_domain + "/login", notice: "Must be loged in." if !signed_in? 
+    redirect_to self.custom_domain + "login", notice: "Must be loged in." if !signed_in? 
   end
 
 

@@ -1,12 +1,9 @@
-
-
-
-		<span class="log_in_or_out_links">
-			<% if current_user %>
-			<%=link_to "Logout",'/logout'   %>
-			<% else %>
-			<%=link_to "Login",'/login' %>
-			<% end %>
-		</span>
+<span class="log_in_or_out_links pull-right">
+	<% if current_user %>
+	<%=link_to "Logout",'/logout'   %>
+	<% else %>
+	<%=link_to "Login",'/login' %>
+	<% end %>
+</span>
 </div>
 </div>

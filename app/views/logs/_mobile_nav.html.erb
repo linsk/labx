@@ -1,14 +1,13 @@
-<div class="container well">
-  <div class="content"> 
-			<div class="span12  border_line">
-      <ul class="inline">
+<div class="container">
+		<div class="span12  border_line">
+      <ul class="inline text-center">
         <li><img src="/assets/home.png"></li>
         <li><img src="/assets/report.png"></li>
         <li><img src="/assets/write.png"></li>
-        <li><img src="/assets/menber.png"></li>
+        <li class="border_line_img"><img src="/assets/menber.png"></li>
       </ul>
     </div>
-    <div class="row text-center head_bg">
+    <div class="span12 text-center head_bg visible-desktop">
       <div class="span5">
         <h3>PM2.5   <span>54</span></h3>
       </div>
@@ -22,6 +21,22 @@
         <h3>NO2    <span>93</span></h3>
       </div>
     </div>
+    <div class="span12 text-center head_bg hidden-desktop">
+      <ul class="inline">
+        <li>
+          <h3>PM2.5   <span>54</span></h3>
+        </li>
+        <li>
+          <h3>PM 10   <span>94</span></h3>
+        </li>
+      </ul>
+      <ul class="inline">
+        <li>
+          <h3>SO2   <span>18</span></h3>
+        </li>
+        <li>
+          <h3>NO2    <span>93</span></h3>
+        </li>
+      </ul>
+    </div>
 <%= display_notice_and_alert %>
-
-
