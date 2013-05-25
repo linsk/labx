@@ -9,7 +9,7 @@
     <%= link_to(image_tag(user.avatar,:alt=>user.status,:class=>user.status),"#" ) if user.avatar %>
     <p class="online-status"><%= user.nick_or_name %></p>
   </div>
-  <div class="span11">
+  <div class="span10">
 		<% if user.status != "office" && user.custom_status_comment %>
 		<p  class="time-status"><%= user.status_comments  %></p>
 		<% end %>
