@@ -31,12 +31,6 @@ body{
 	font-family:serif;
 	font-weight: 100;
 }
-.teach-itme{
-	float: left;
-	width: 6%;
-	padding:6px 5px 0  5px;
-	text-align: center;
-}
 
 
 .status-info{
@@ -84,7 +78,7 @@ body{
 
 .odd_card{
 	background-color:#fafafa;
-	/*border-top: 1px solid #eaeae7;	*/
+/*border-top: 1px solid #eaeae7;	*/
 }
 
 #status .card .profile{
@@ -98,15 +92,11 @@ body{
 }
 
 .status-online{
-border-left: 4px solid #64c26d;
+border-left: 4px solid #64c26d !important;;
 }
 
 .status-office{
-border-left: 4px solid #448bb4;
-}
-
-.status-office{
-border-left: 4px solid #000;
+border-left: 4px solid #448bb4 !important;; 
 }
 
 #status .card .profile .name{
