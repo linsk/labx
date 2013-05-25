@@ -10,6 +10,7 @@ Mothinlab::Application.routes.draw do
   match '/logout', to: 'sessions#destroy'
 
   match '/mshow/:id', to:'users#mobileshow'
+  match '/custom_status/:id', to: 'users#custom_status_comment'
 
   match '/checkin', to: 'logs#log'
   match '/checkinfromchrome', to: 'logs#checkin_from_chromeextension'

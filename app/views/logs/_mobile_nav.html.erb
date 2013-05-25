@@ -1,13 +1,17 @@
 <div class="container">
 		<div class="span12  border_line">
       <ul class="inline text-center">
-        <li><img src="/assets/home.png"></li>
+        <li><a href="/"><img src="/assets/home.png"></a></li>
         <li><img src="/assets/report.png"></li>
-        <li><img src="/assets/write.png"></li>
-        <li><%=link_to image_tag("/assets/menber.png", :class=>"icon_opacity"),'/logout'   %></li>
+        <li><%= link_to image_tag('/assets/write.png'),:id => current_user,:action => 'custom_status_comment',:controller => 'users' if current_user%></li>
+        <% if current_user && current_user.avatar%>
+          <li><%=link_to image_tag(current_user.avatar, :width => "32"),:id => current_user,:action => 'mobileshow', :controller => "users" %></li>
+        <% else %>
+          <li><%=link_to image_tag("/assets/menber.png", :class => "icon_opacity"),'/login'   %></li>
+        <% end %>
       </ul>
     </div>
-    <div class="span12 text-center head_bg visible-desktop">
+  <!--   <div class="span12 text-center head_bg visible-desktop">
       <div class="span5">
         <h3>PM2.5   <span>54</span></h3>
       </div>
@@ -21,9 +25,8 @@
         <h3>NO2    <span>93</span></h3>
       </div>
     
-      <%= display_notice_and_alert %>
-    </div>
-    <div class="span12 text-center head_bg hidden-desktop">
+    </div> -->
+    <div class="span12 text-center head_bg">
       <ul class="inline">
         <li>
           <h3>PM2.5   <span>54</span></h3>
@@ -40,4 +43,6 @@
           <h3>NO2    <span>93</span></h3>
         </li>
       </ul>
+            <%= display_notice_and_alert %>
+
   </div>

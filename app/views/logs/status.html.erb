@@ -5,9 +5,9 @@
 	<% @users.each do |user| %>
 
 <div class="span12 menber_list">
-  <div class="span1 teach-itme">
-    <%= link_to(image_tag(user.avatar,:alt=>user.status,:class=>user.status),"#" ) if user.avatar %>
-    <p class="online-status"><%= user.nick_or_name %></p>
+  <div class="teach-itme">
+    <%= link_to(image_tag(user.avatar,:alt=>user.status),:id => user,:action=> 'mobileshow',:controller =>  'users' ) if user.avatar %>
+    <p><%= link_to user.nick_or_name,:id => user,:action=> 'mobileshow',:controller =>  'users', :class => 'status-'+user.status %></p>
   </div>
   <div class="span10">
 		<% if user.status != "office" && user.custom_status_comment %>
@@ -18,8 +18,9 @@
 
     <p class="pull-right leavetime_status"><%= user.status == "offline" ? user.leaved : user.logs.last.device %></p>
   </div>
-  <div class="row bg"></div>
 </div>
+
+
 
 <% end %>
 <%= render :partial => 'layouts/mobile_footer' %>

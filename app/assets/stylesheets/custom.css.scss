@@ -19,14 +19,12 @@ body{
 	opacity: 0.5;
 }
 .menber_list{
-	border-top: 2px solid rgb(226, 213, 213);
-	padding-top: 10px;
-	background: rgb(247, 242, 242);
-	
+	background:#fff;
 }
 .head_bg{
 	background: #fff6e5;
 	overflow: auto;
+	border-bottom: 2px solid #eee;
 }
 .head_bg h3{
 	color: #7ec7e3;
@@ -40,7 +38,6 @@ body{
 	width: 6%;
 	padding:6px 5px 0  5px;
 	text-align: center;
-	border: 1px solid rgb(233, 214, 214);
 }
 .bg{
 	background: white;
@@ -49,8 +46,25 @@ body{
 	margin-bottom: 0px;
 	margin-left: 0px;
 }
+.odd_card{
+	background-color:#fafafa;
+	border: 1px solid #eaeae7;	
+
+
+}
 .status-info{
 	color:#3e454c;
+}
+.status-online{
+color:#000;
+}
+
+.status-office{
+color:#fff;
+}
+
+.status-offline{
+color:#eee;
 }
 .time-status{
 	color: #bebfc1;
@@ -74,4 +88,10 @@ body{
 	font-size: 16px;
 }
 
+.custom_stast_comment{
+	padding-left:20px;
+}
 
+#mpshow{
+	padding-left:30px;
+}

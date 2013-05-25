@@ -42,11 +42,11 @@ PC:
  ☐ 多团队支持
  ✔ session有效期 @done (13-05-05 00:31)
  ☐ 统计的算法检查
- 重构统计的方法 参数「现在，过去，在哪，时间段」
  ☐ 本土化  #doing
  ☐ 保存头像
- 统计的方法似乎在Model里实现不够科学，考虑Helpers
- /mshow/1  未登录 DoubleRenderError
+ ☐ 重构统计的方法 参数「现在，过去，在哪，时间段」
+ ☐ 统计的方法似乎在Model里实现不够科学，考虑Helpers
+ ☐ /mshow/1  未登录 DoubleRenderError
 
  Chrome EXtension:
  ☐ beta

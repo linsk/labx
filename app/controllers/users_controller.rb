@@ -42,6 +42,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def custom_status_comment
+    @user = User.find(params[:id])
+  end
+
   # GET /users/new
   # GET /users/new.json
   def new

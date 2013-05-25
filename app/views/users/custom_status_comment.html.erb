@@ -1,0 +1,29 @@
+<%= render :partial => "/logs/mobile_nav" %>
+
+<div class="span12 custom_stast_comment">
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <h3>自定义状态</h3>
+    <%= f.text_area :custom_status_comment,:rows => 6 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+ 
+</div>
+
+<%= render :partial => 'layouts/mobile_footer' %>
