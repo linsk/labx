@@ -1,9 +1,5 @@
-<span class="log_in_or_out_links pull-right">
 	<% if current_user %>
-	<%=link_to "Logout",'/logout'   %>
-	<% else %>
-	<%=link_to "Login",'/login' %>
+	<%=link_to image_tag("/assets/logout.png", :class=>"pull-right icon_opacity"),'/logout'   %>
 	<% end %>
-</span>
 </div>
 </div>

@@ -4,7 +4,7 @@
         <li><img src="/assets/home.png"></li>
         <li><img src="/assets/report.png"></li>
         <li><img src="/assets/write.png"></li>
-        <li class="border_line_img"><img src="/assets/menber.png"></li>
+        <li><%=link_to image_tag("/assets/menber.png", :class=>"icon_opacity"),'/logout'   %></li>
       </ul>
     </div>
     <div class="span12 text-center head_bg visible-desktop">
@@ -20,6 +20,8 @@
       <div  class="span5">
         <h3>NO2    <span>93</span></h3>
       </div>
+    
+      <%= display_notice_and_alert %>
     </div>
     <div class="span12 text-center head_bg hidden-desktop">
       <ul class="inline">
@@ -38,5 +40,4 @@
           <h3>NO2    <span>93</span></h3>
         </li>
       </ul>
-    </div>
-<%= display_notice_and_alert %>
+  </div>
