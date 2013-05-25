@@ -1,30 +1,30 @@
 
 <%= render :partial => "mobile_nav" %>
 
-
+<div id="status">
 	<% @users.each do |user| %>
 
-<div class="span12 card">
-  <div class="profile span3">
-    <%= link_to(image_tag(user.avatar,:alt=>user.status,:width=> '87px'),
-                              :id => user,:action=> 'mobileshow',:controller =>  'users' ) if user.avatar %>
-    <p><%= link_to user.nick_or_name,:id => user,:action=> 'mobileshow',:controller =>  'users', 
-                                                 :class => 'status-'+user.status %></p>
-  </div>
-  <div class="content span9">
-    <div class="status_comments">
-  		<% if user.status != "office" %>
-  		<p><%= user.status_comments  %></p>
-  		<% end %>
 
-      <h4><%= user.custom_status_comment %></h4>
-
-      <p class="pull-right leavetime_status"><%= user.status == "offline" ? user.leaved : user.logs.last.device %></p>
+  <div class="card row">
+    <div class="span3">
+      <div class="profile">
+        <%= link_to(image_tag(user.avatar,:alt=>user.status,:width=> '60px',:class=>'status-' + user.status),:id => user,:action=> 'mobileshow',:controller =>  'users' ) if user.avatar %>
+        <p class="name"><%= link_to user.nick_or_name,:id => user,:action=> 'mobileshow',:controller =>  'users' %></p>
+      </div>
     </div>
+
+    <div class="right_comments span9">
+      <p class="statu_comments"><%= user.status_comments  %></p>
+      <h4><%= user.custom_status_comment %></h4>
+      <div class="leave_or_from pull-right">
+        <%= user.status == "offline" ? user.leaved : user.logs.last.device %>
+      </div>
+    </div>
+    
   </div>
-</div>
 
 
 
 <% end %>
+</div>
 <%= render :partial => 'layouts/mobile_footer' %>
