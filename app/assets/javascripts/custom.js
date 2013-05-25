@@ -1,3 +1,3 @@
 $(document).ready(function(){
-	$(".menber_list:odd").addClass('odd_card');
+	$(".card:odd").addClass('odd_card');
 });

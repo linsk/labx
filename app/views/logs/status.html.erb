@@ -4,19 +4,23 @@
 
 	<% @users.each do |user| %>
 
-<div class="span12 menber_list">
-  <div class="teach-itme">
-    <%= link_to(image_tag(user.avatar,:alt=>user.status),:id => user,:action=> 'mobileshow',:controller =>  'users' ) if user.avatar %>
-    <p><%= link_to user.nick_or_name,:id => user,:action=> 'mobileshow',:controller =>  'users', :class => 'status-'+user.status %></p>
+<div class="span12 card">
+  <div class="profile span3">
+    <%= link_to(image_tag(user.avatar,:alt=>user.status,:width=> '87px'),
+                              :id => user,:action=> 'mobileshow',:controller =>  'users' ) if user.avatar %>
+    <p><%= link_to user.nick_or_name,:id => user,:action=> 'mobileshow',:controller =>  'users', 
+                                                 :class => 'status-'+user.status %></p>
   </div>
-  <div class="span10">
-		<% if user.status != "office" && user.custom_status_comment %>
-		<p  class="time-status"><%= user.status_comments  %></p>
-		<% end %>
+  <div class="content span9">
+    <div class="status_comments">
+  		<% if user.status != "office" %>
+  		<p><%= user.status_comments  %></p>
+  		<% end %>
 
-    <h4><%= user.custom_status_comment %></h4>
+      <h4><%= user.custom_status_comment %></h4>
 
-    <p class="pull-right leavetime_status"><%= user.status == "offline" ? user.leaved : user.logs.last.device %></p>
+      <p class="pull-right leavetime_status"><%= user.status == "offline" ? user.leaved : user.logs.last.device %></p>
+    </div>
   </div>
 </div>
 
