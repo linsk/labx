@@ -15,7 +15,7 @@
 
     <div class="right_comments span9">
       <p class="statu_comments"><%= user.status_comments  %></p>
-      <h4><%= user.custom_status_comment %></h4>
+      <p class="custom_comment"><%= user.custom_status_comment %></h4>
       <div class="leave_or_from pull-right">
         <%= user.status == "offline" ? user.leaved : user.logs.last.device %>
       </div>
