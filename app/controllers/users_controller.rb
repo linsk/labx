@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         format.html # index.html.erb
         format.json { render json: @users }
       else
-        format.html { redirect_to custom_domain + '/login',notice:'r u admin?' }
+        format.html { redirect_to login_url, notice:'r u admin?' }
       end
     end
   end
@@ -21,9 +21,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      must_loged_in
-      if  !"Windows Macintosh".include?(user_device)   #好脏...噗
-         format.html { redirect_to custom_domain + request.original_fullpath() }
+      if !signed_in? 
+       format.html { redirect_to login_url, notice: "Must be loged in."}
       else
         format.html # show.html.erb
         format.json { render json: @user }
@@ -35,10 +34,12 @@ class UsersController < ApplicationController
   def mobileshow
     @user = User.find(params[:id])
     respond_to do |format|
-      must_loged_in
-      format.html # show.html.erb
-      format.json { render json: @user }
-      
+      if !signed_in? 
+       format.html { redirect_to login_url, notice: "Must be loged in."}
+      else
+        format.html # show.html.erb
+        format.json { render json: @user }
+      end
     end
   end
 
@@ -70,7 +71,7 @@ class UsersController < ApplicationController
         format.html # show.html.erb
         format.json { render json: @user }
       else
-        format.html { redirect_to custom_domain,notice: 'r u admin?'  }
+        format.html { redirect_to root_path,notice: 'r u admin?'  }
       end
       
     end
@@ -82,7 +83,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     respond_to do |format|
       if @user.save
-        format.html { redirect_to custom_domain+"/users/"+@user.id.to_s, notice: 'User was successfully created.' }
+        format.html { redirect_to "/users/"+@user.id.to_s, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -98,7 +99,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user == current_user &&  @user.update_attributes(params[:user])
-        format.html { redirect_to custom_domain+"/users/"+@user.id.to_s, notice: 'User was successfully updated.' }
+        format.html { redirect_to "/users/"+@user.id.to_s, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -122,6 +123,6 @@ class UsersController < ApplicationController
   def disconnect
     @auth = Authentication.find_by_provider_and_user_id(params[:provider],current_user)
     @auth.destroy if @auth
-    redirect_to custom_domain, :notice => "Disconnect successfully"
+    redirect_to root_path, :notice => "Disconnect successfully"
   end
 end

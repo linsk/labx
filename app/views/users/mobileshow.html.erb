@@ -117,7 +117,7 @@
 
 
 
-<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to 'Edit', edit_user_path(@user) if @user == current_user || current_user.admin? %>
 
 
 
